@@ -1,0 +1,23 @@
+{
+    "name": "dotpulse/accordionpages",
+    "type": "typo3-flow-plugin",
+    "description": "Generates accordion from pages",
+    "version": "2.2.0",
+    "require": {
+        "typo3/neos-nodetypes": "2.2.*"
+    },
+    "extra": {
+        "installer-name": "Dotpulse.AccordionPages",
+        "neos": {
+            "package-key": "Dotpulse.AccordionPages"
+        }
+    },
+    "authors": [
+        {
+            "name": "Samuel Hauser",
+            "email": "samuel.hauser@webexcess.ch",
+            "homepage": "https://webexcess.github.io/open-source-initiative/",
+            "role": "Developer"
+        }
+    ]
+}

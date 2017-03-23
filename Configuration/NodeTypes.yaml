@@ -1,0 +1,76 @@
+'Dotpulse.AccordionPages:Container':
+  superTypes:
+    'TYPO3.Neos:Content': TRUE
+  ui:
+    label: i18n
+    group: 'structure'
+    icon: 'icon-chevron-down'
+    inspector:
+      groups:
+        accordion:
+          label: i18n
+          position: 1
+  properties:
+    closeOthers:
+      type: boolean
+      defaultValue: TRUE
+      ui:
+        label: i18n
+        inspector:
+          group: 'accordion'
+    firstOpen:
+      type: boolean
+      defaultValue: FALSE
+      ui:
+        label: i18n
+        inspector:
+          group: 'accordion'
+
+'Dotpulse.AccordionPages:Content':
+  superTypes:
+    'TYPO3.Neos:Shortcut': TRUE
+    'TYPO3.Neos.Seo:TitleTagMixin': FALSE
+    'TYPO3.Neos.Seo:SeoMetaTagsMixin': FALSE
+    'TYPO3.Neos.Seo:TwitterCardMixin': FALSE
+    'TYPO3.Neos.Seo:CanonicalLinkMixin': FALSE
+    'TYPO3.Neos.Seo:OpenGraphMixin': FALSE
+    'TYPO3.Neos.Seo:XmlSitemapMixin': FALSE
+  ui:
+    label: i18n
+    group: 'structure'
+    icon: 'icon-chevron-down'
+    inspector:
+      groups:
+        accordion:
+          label: i18n
+          position: 1
+  constraints:
+    nodeTypes:
+      'TYPO3.Neos:Document': FALSE
+  childNodes:
+      main:
+        type: 'TYPO3.Neos:ContentCollection'
+        constraints:
+          nodeTypes:
+            'Dotpulse.AccordionPages:Content': FALSE
+  properties:
+    targetMode:
+      defaultValue: 'parentNode'
+      ui:
+        inspector:
+          group: ~
+    target:
+      ui:
+        inspector:
+          group: ~
+    metaRobotsNoindex:
+      defaultValue: TRUE
+    metaRobotsNofollow:
+      defaultValue: TRUE
+    active:
+      type: boolean
+      defaultValue: FALSE
+      ui:
+        label: i18n
+        inspector:
+          group: 'accordion'

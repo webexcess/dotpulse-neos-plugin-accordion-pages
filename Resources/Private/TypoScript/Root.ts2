@@ -1,0 +1,78 @@
+root.accordionPages {
+	prototype(Page) {
+		body = TYPO3.Neos:Shortcut
+		body {
+			templatePath = 'resource://Dotpulse.AccordionPages/Private/Templates/TypoScriptObjects/Accordion.html'
+			layoutRootPath = ''
+
+			content = PrimaryContent {
+				nodePath = 'main'
+			}
+		}
+	}
+
+	@position = 'before shortcut'
+	condition = ${q(node).is('[instanceof Dotpulse.AccordionPages:Content]')}
+	type = 'TYPO3.Neos:Page'
+}
+
+prototype(Dotpulse.AccordionPages:Container) < prototype(Content) {
+	attributes {
+		class = TYPO3.TypoScript:RawArray {
+			accordion = 'accordion'
+			backend = 'neos-accordion-backend'
+			backend.@if.isInBackend = ${node.context.inBackend}
+		}
+		data-close-others = ${q(node).property('closeOthers') ? true : false}
+		data-open-first = ${q(node).property('firstOpen') ? true : false}
+	}
+
+	content = TYPO3.TypoScript:Collection {
+		collection = ${q(documentNode).children('[instanceof Dotpulse.AccordionPages:Content][_hiddenInIndex=false]').get()}
+		itemName = 'node'
+		iterationName = 'pageIterator'
+		itemRenderer = Dotpulse.AccordionPages:Content
+	}
+
+	@cache {
+		mode = 'cached'
+		maximumLifetime = 0
+		entryIdentifier = TYPO3.TypoScript:RawArray {
+			node = ${node}
+			editPreviewMode = ${node.context.currentRenderingMode.name}
+			uri = ${String.toString(request.httpRequest.uri)}
+		}
+		entryTags {
+			# Whenever the node changes..
+			1 = ${'Node_' + documentNode.identifier}
+			# Whenever a child node changes..
+			2 = ${'DescendantOf_' + documentNode.identifier}
+		}
+	}
+}
+
+prototype(Dotpulse.AccordionPages:Content) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Dotpulse.AccordionPages/Private/Templates/NodeTypes/Content.html'
+
+	attributes = TYPO3.TypoScript:Attributes {
+		class = TYPO3.TypoScript:RawArray {
+			item = 'accordion-item'
+			active = ${q(node).property('active') ? 'accordion-item-active' : ''}
+		}
+
+	}
+	titleAttributes = TYPO3.TypoScript:Attributes {
+		class = 'accordion-title'
+	}
+	contentAttributes = TYPO3.TypoScript:Attributes {
+		class = 'accordion-content'
+	}
+
+	content = ContentCollection {
+		nodePath = 'main'
+		attributes {
+			class = 'accordion-content-inner'
+			class.@process.collectionClass >
+		}
+	}
+}

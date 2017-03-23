@@ -1,0 +1,14 @@
+TYPO3:
+  Neos:
+    userInterface:
+      translation:
+        autoInclude:
+          'Dotpulse.AccordionPages': ['NodeTypes/*']
+    typoScript:
+      autoInclude:
+        'Dotpulse.AccordionPages': TRUE
+
+Dotpulse:
+  AccordionPages:
+    includeCss: FALSE
+    includeJavascript: FALSE
