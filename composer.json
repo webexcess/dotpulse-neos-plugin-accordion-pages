@@ -1,10 +1,9 @@
 {
     "name": "dotpulse/accordionpages",
-    "type": "typo3-flow-plugin",
+    "type": "neos-plugin",
     "description": "Generates accordion from pages",
-    "version": "2.2.0",
     "require": {
-        "typo3/neos-nodetypes": "2.2.*"
+        "neos/neos": "3.*"
     },
     "extra": {
         "installer-name": "Dotpulse.AccordionPages",

@@ -1,6 +1,6 @@
 'Dotpulse.AccordionPages:Container':
   superTypes:
-    'TYPO3.Neos:Content': TRUE
+    'Neos.Neos:Content': TRUE
   ui:
     label: i18n
     group: 'structure'
@@ -28,13 +28,13 @@
 
 'Dotpulse.AccordionPages:Content':
   superTypes:
-    'TYPO3.Neos:Shortcut': TRUE
-    'TYPO3.Neos.Seo:TitleTagMixin': FALSE
-    'TYPO3.Neos.Seo:SeoMetaTagsMixin': FALSE
-    'TYPO3.Neos.Seo:TwitterCardMixin': FALSE
-    'TYPO3.Neos.Seo:CanonicalLinkMixin': FALSE
-    'TYPO3.Neos.Seo:OpenGraphMixin': FALSE
-    'TYPO3.Neos.Seo:XmlSitemapMixin': FALSE
+    'Neos.Neos:Shortcut': TRUE
+    'Neos.Seo:TitleTagMixin': FALSE
+    'Neos.Seo:SeoMetaTagsMixin': FALSE
+    'Neos.Seo:TwitterCardMixin': FALSE
+    'Neos.Seo:CanonicalLinkMixin': FALSE
+    'Neos.Seo:OpenGraphMixin': FALSE
+    'Neos.Seo:XmlSitemapMixin': FALSE
   ui:
     label: i18n
     group: 'structure'
@@ -46,7 +46,7 @@
           position: 1
   constraints:
     nodeTypes:
-      'TYPO3.Neos:Document': FALSE
+      'Neos.Neos:Document': FALSE
   childNodes:
       main:
         type: 'TYPO3.Neos:ContentCollection'

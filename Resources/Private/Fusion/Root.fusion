@@ -1,6 +1,6 @@
 root.accordionPages {
 	prototype(Page) {
-		body = TYPO3.Neos:Shortcut
+		body = Neos.Neos:Shortcut
 		body {
 			templatePath = 'resource://Dotpulse.AccordionPages/Private/Templates/TypoScriptObjects/Accordion.html'
 			layoutRootPath = ''
@@ -13,12 +13,12 @@ root.accordionPages {
 
 	@position = 'before shortcut'
 	condition = ${q(node).is('[instanceof Dotpulse.AccordionPages:Content]')}
-	type = 'TYPO3.Neos:Page'
+	type = 'Neos.Neos:Page'
 }
 
 prototype(Dotpulse.AccordionPages:Container) < prototype(Content) {
 	attributes {
-		class = TYPO3.TypoScript:RawArray {
+		class = Neos.Fusion:RawArray {
 			accordion = 'accordion'
 			backend = 'neos-accordion-backend'
 			backend.@if.isInBackend = ${node.context.inBackend}
@@ -27,7 +27,7 @@ prototype(Dotpulse.AccordionPages:Container) < prototype(Content) {
 		data-open-first = ${q(node).property('firstOpen') ? true : false}
 	}
 
-	content = TYPO3.TypoScript:Collection {
+	content = Neos.Fusion:Collection {
 		collection = ${q(documentNode).children('[instanceof Dotpulse.AccordionPages:Content][_hiddenInIndex=false]').get()}
 		itemName = 'node'
 		iterationName = 'pageIterator'
@@ -37,7 +37,7 @@ prototype(Dotpulse.AccordionPages:Container) < prototype(Content) {
 	@cache {
 		mode = 'cached'
 		maximumLifetime = 0
-		entryIdentifier = TYPO3.TypoScript:RawArray {
+		entryIdentifier = Neos.Fusion:RawArray {
 			node = ${node}
 			editPreviewMode = ${node.context.currentRenderingMode.name}
 			uri = ${String.toString(request.httpRequest.uri)}
@@ -51,20 +51,20 @@ prototype(Dotpulse.AccordionPages:Container) < prototype(Content) {
 	}
 }
 
-prototype(Dotpulse.AccordionPages:Content) < prototype(TYPO3.TypoScript:Template) {
+prototype(Dotpulse.AccordionPages:Content) < prototype(Neos.Fusion:Template) {
 	templatePath = 'resource://Dotpulse.AccordionPages/Private/Templates/NodeTypes/Content.html'
 
-	attributes = TYPO3.TypoScript:Attributes {
-		class = TYPO3.TypoScript:RawArray {
+	attributes = Neos.Fusion:Attributes {
+		class = Neos.Fusion:RawArray {
 			item = 'accordion-item'
 			active = ${q(node).property('active') ? 'accordion-item-active' : ''}
 		}
 
 	}
-	titleAttributes = TYPO3.TypoScript:Attributes {
+	titleAttributes = Neos.Fusion:Attributes {
 		class = 'accordion-title'
 	}
-	contentAttributes = TYPO3.TypoScript:Attributes {
+	contentAttributes = Neos.Fusion:Attributes {
 		class = 'accordion-content'
 	}
 
