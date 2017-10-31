@@ -28,13 +28,13 @@
 
 'Dotpulse.AccordionPages:Content':
   superTypes:
-    'Neos.Neos:Shortcut': TRUE
-    'Neos.Seo:TitleTagMixin': FALSE
-    'Neos.Seo:SeoMetaTagsMixin': FALSE
-    'Neos.Seo:TwitterCardMixin': FALSE
-    'Neos.Seo:CanonicalLinkMixin': FALSE
-    'Neos.Seo:OpenGraphMixin': FALSE
-    'Neos.Seo:XmlSitemapMixin': FALSE
+    'Neos.Neos:Document': true
+    'Neos.Seo:TitleTagMixin': false
+    'Neos.Seo:SeoMetaTagsMixin': false
+    'Neos.Seo:TwitterCardMixin': false
+    'Neos.Seo:CanonicalLinkMixin': false
+    'Neos.Seo:OpenGraphMixin': false
+    'Neos.Seo:XmlSitemapMixin': false
   ui:
     label: i18n
     group: 'structure'
@@ -49,24 +49,11 @@
       'Neos.Neos:Document': FALSE
   childNodes:
       main:
-        type: 'TYPO3.Neos:ContentCollection'
+        type: 'Neos.Neos:ContentCollection'
         constraints:
           nodeTypes:
             'Dotpulse.AccordionPages:Content': FALSE
   properties:
-    targetMode:
-      defaultValue: 'parentNode'
-      ui:
-        inspector:
-          group: ~
-    target:
-      ui:
-        inspector:
-          group: ~
-    metaRobotsNoindex:
-      defaultValue: TRUE
-    metaRobotsNofollow:
-      defaultValue: TRUE
     active:
       type: boolean
       defaultValue: FALSE
