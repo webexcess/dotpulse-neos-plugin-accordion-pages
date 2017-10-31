@@ -43,7 +43,7 @@
       groups:
         accordion:
           label: i18n
-          position: 1
+          position: 20
   constraints:
     nodeTypes:
       'Neos.Neos:Document': FALSE
