@@ -4,9 +4,7 @@ root {
 		renderer = Neos.Fusion:Http.Message {
 			httpResponseHead {
 				statusCode = 301
-				headers.Location = NodeUri {
-					node = ${q(documentNode).parent().get(0)}
-				}
+				headers.Location = Dotpulse.AccordionPages:NodeUri
 			}
 		}
 	}
@@ -22,6 +20,31 @@ root {
 			}
 		}
 	}
+}
+
+prototype(Dotpulse.AccordionPages:NodeUri) < prototype(NodeUri) {
+	@context.nodeObject = ${node}
+	node = ${q(nodeObject).is('[instanceof Neos.NodeTypes:Page]') ? nodeObject : q(nodeObject).parents('[instanceof Neos.NodeTypes:Page]').get(0)}
+	section = Dotpulse.AccordionPages:CollectionProperty
+}
+
+prototype(Dotpulse.AccordionPages:CollectionProperty) < prototype(Neos.Fusion:Collection) {
+	property = 'uriPathSegment'
+	nodeObject = ${nodeObject ? nodeObject : node}
+
+	seperator = Neos.Fusion:RawArray {
+		first = ''
+		default = '--'
+	}
+
+	@context.property = ${this.property}
+	@context.seperator = ${this.seperator}
+
+	array = ${q(this.nodeObject).add(q(this.nodeObject).parentsUntil('[instanceof Neos.NodeTypes:Page]')).get()}
+	collection = ${Array.reverse(this.array)}
+	iterationName = 'iterator'
+	itemName = 'element'
+	itemRenderer = ${(iterator.isFirst ? seperator.first : seperator.default) + q(element).property(property)}
 }
 
 prototype(Dotpulse.AccordionPages:Container) < prototype(Content) {
