@@ -1,6 +1,6 @@
 'Dotpulse.AccordionPages:Container':
   superTypes:
-    'Neos.Neos:Content': TRUE
+    'Neos.Neos:Content': true
   ui:
     label: i18n
     group: 'structure'
@@ -13,14 +13,14 @@
   properties:
     closeOthers:
       type: boolean
-      defaultValue: TRUE
+      defaultValue: true
       ui:
         label: i18n
         inspector:
           group: 'accordion'
     firstOpen:
       type: boolean
-      defaultValue: FALSE
+      defaultValue: false
       ui:
         label: i18n
         inspector:
@@ -41,23 +41,23 @@
     icon: 'icon-chevron-down'
     inspector:
       groups:
-        accordion:
+        document:
           label: i18n
-          position: 20
   constraints:
     nodeTypes:
-      'Neos.Neos:Document': FALSE
+      'Neos.Neos:Document': false
   childNodes:
       main:
         type: 'Neos.Neos:ContentCollection'
         constraints:
           nodeTypes:
-            'Dotpulse.AccordionPages:Content': FALSE
+            'Dotpulse.AccordionPages:Content': false
   properties:
     active:
       type: boolean
-      defaultValue: FALSE
+      defaultValue: false
       ui:
         label: i18n
+        reloadPageIfChanged: false
         inspector:
-          group: 'accordion'
+          group: 'document'

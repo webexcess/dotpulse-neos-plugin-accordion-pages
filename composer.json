@@ -3,7 +3,7 @@
     "type": "neos-plugin",
     "description": "Generates accordion from pages",
     "require": {
-        "neos/neos": "3.*"
+        "neos/nodetypes": "^3.2"
     },
     "extra": {
         "installer-name": "Dotpulse.AccordionPages",
@@ -14,8 +14,8 @@
     "authors": [
         {
             "name": "Samuel Hauser",
-            "email": "samuel.hauser@webexcess.ch",
-            "homepage": "https://webexcess.github.io/open-source-initiative/",
+            "email": "samuel.hauser@dotpulse.ch",
+            "homepage": "https://github.com/loop86",
             "role": "Developer"
         }
     ]

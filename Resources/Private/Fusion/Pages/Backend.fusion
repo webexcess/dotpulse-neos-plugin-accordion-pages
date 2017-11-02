@@ -1,0 +1,15 @@
+
+root.accordionDocument {
+	condition = ${q(node).is('[instanceof Dotpulse.AccordionPages:Content]') && documentNode.context.inBackend}
+	renderPath = '/accordionDocument'
+}
+
+accordionDocument = Page {
+	body {
+		templatePath = 'resource://Dotpulse.AccordionPages/Private/Templates/FusionObjects/Accordion.html'
+		layoutRootPath = ''
+		content = PrimaryContent {
+			nodePath = 'main'
+		}
+	}
+}

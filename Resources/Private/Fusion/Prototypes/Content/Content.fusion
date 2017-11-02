@@ -1,0 +1,26 @@
+prototype(Dotpulse.AccordionPages:Content) < prototype(Neos.Fusion:Template) {
+	templatePath = 'resource://Dotpulse.AccordionPages/Private/Templates/NodeTypes/Content.html'
+
+	attributes = Neos.Fusion:Attributes {
+		class = Neos.Fusion:RawArray {
+			item = 'accordion-item'
+			active = ${q(node).property('active') ? 'accordion-item-init-active' : ''}
+		}
+		id = ${q(node).property('uriPathSegment')}
+
+	}
+	titleAttributes = Neos.Fusion:Attributes {
+		class = 'accordion-title'
+	}
+	contentAttributes = Neos.Fusion:Attributes {
+		class = 'accordion-content'
+	}
+
+	content = ContentCollection {
+		nodePath = 'main'
+		attributes {
+			class = 'accordion-content-inner'
+			class.@process.collectionClass >
+		}
+	}
+}

@@ -1,0 +1,4 @@
+prototype(Dotpulse.AccordionPages:NodeUri) < prototype(NodeUri) {
+	node = ${q(node).is('[instanceof Neos.NodeTypes:Page]') ? node : q(node).parents('[instanceof Neos.NodeTypes:Page]').get(0)}
+	section = Dotpulse.AccordionPages:CollectionProperty
+}

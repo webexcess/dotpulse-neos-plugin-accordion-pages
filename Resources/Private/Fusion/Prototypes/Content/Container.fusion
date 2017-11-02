@@ -1,0 +1,34 @@
+prototype(Dotpulse.AccordionPages:Container) < prototype(Content) {
+	attributes {
+		class = Neos.Fusion:RawArray {
+			accordion = 'accordion'
+			backend = 'neos-accordion-backend'
+			backend.@if.isInBackend = ${node.context.inBackend}
+		}
+		data-close-others = ${q(node).property('closeOthers') ? true : false}
+		data-open-first = ${q(node).property('firstOpen') ? true : false}
+	}
+
+	content = Neos.Fusion:Collection {
+		collection = ${q(documentNode).children('[instanceof Dotpulse.AccordionPages:Content][_hiddenInIndex=false]').get()}
+		itemName = 'node'
+		iterationName = 'pageIterator'
+		itemRenderer = Dotpulse.AccordionPages:Content
+	}
+
+	@cache {
+		mode = 'cached'
+		maximumLifetime = 0
+		entryIdentifier = Neos.Fusion:RawArray {
+			node = ${node}
+			editPreviewMode = ${node.context.currentRenderingMode.name}
+			uri = ${String.toString(request.httpRequest.uri)}
+		}
+		entryTags {
+			# Whenever the node changes..
+			1 = ${'Node_' + documentNode.identifier}
+			# Whenever a child node changes..
+			2 = ${'DescendantOf_' + documentNode.identifier}
+		}
+	}
+}

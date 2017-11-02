@@ -6,6 +6,9 @@ $accordion-title-font-weight: normal !default;
 $accordion-title-background: #000 !default;
 $accordion-title-background-hover: lighten($accordion-title-background, 30) !default;
 $accordion-content-inner-padding: 35px 20px !default;
+$accordion-content-inner-padding-top: 35px !default;
+$accordion-content-inner-padding-bottom: 35px !default;
+$accordion-content-inner-padding-x: 20px !default;
 
 .accordion-item {
 	padding-bottom: 4px;
@@ -28,37 +31,45 @@ $accordion-content-inner-padding: 35px 20px !default;
 	cursor: pointer;
 	transition: color 0.4s ease, background-color 0.4s ease;
 
-	span.neos-inline-editable {
+	.neos-inline-editable {
 		display: block;
 	}
+
 	&:hover {
 		color: $accordion-title-color-hover;
 		background-color: $accordion-title-background-hover;
 	}
+
 	&:focus {
 		color: $accordion-title-color;
 	}
 
-	&::after {
-		@extend %ico;
-		content: $ico-arrow-down;
-		position: absolute;
+	&::after,
+	&::before {
+		content: '';
+		border-radius: 2px;
 		display: block;
-		font-size: 1rem;
-		right: 25px;
-		transform-origin: center center;
-		transition: transform 0.4s ease;
+		width: 25px;
+		height: 3px;
+		position: absolute;
 		top: 50%;
-		// translateZ is a Bugfix for the iOS
-		//transform: translateY(-50%) translateZ(1px);
-		transform: translateY(-50%) translateZ(1px) rotate(0deg);
+		right: 25px;
+		transition: .3s;
+		transform: translateY(-50%) translateZ(1px);
+		background: $accordion-title-color;
+	}
+
+	&::after {
+		transform: translateY(-50%) translateZ(1px) rotate(90deg);
 	}
 
 	.accordion-item-active & {
-		&::after {
-			//transform: translateY(-50%) translateZ(1px);
+		&::before {
 			transform: translateY(-50%) translateZ(1px) rotate(180deg);
-			//content: $ico-arrow-up;
+		}
+
+		&::after {
+			transform: translateY(-50%) translateZ(1px) rotate(-180deg);
 		}
 	}
 }
@@ -74,7 +85,10 @@ $accordion-content-inner-padding: 35px 20px !default;
 }
 
 .accordion-content-inner {
-	padding: $accordion-content-inner-padding;
+	padding-left: $accordion-content-inner-padding-x;
+	padding-right: $accordion-content-inner-padding-x;
+	margin-top: $accordion-content-inner-padding-top;
+	margin-bottom: $accordion-content-inner-padding-bottom;
 }
 
 .neos-accordion-plugin-title {

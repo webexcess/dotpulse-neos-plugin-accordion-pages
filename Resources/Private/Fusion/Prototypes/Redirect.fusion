@@ -1,0 +1,6 @@
+prototype(Dotpulse.AccordionPages:Redirect) < prototype(Neos.Fusion:Http.Message) {
+	httpResponseHead {
+		statusCode = 301
+		headers.Location = Dotpulse.AccordionPages:NodeUri
+	}
+}

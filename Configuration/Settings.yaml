@@ -6,9 +6,9 @@ Neos:
           'Dotpulse.AccordionPages': ['NodeTypes/*']
     fusion:
       autoInclude:
-        'Dotpulse.AccordionPages': TRUE
+        'Dotpulse.AccordionPages': true
 
 Dotpulse:
   AccordionPages:
-    includeCss: FALSE
-    includeJavascript: FALSE
+    includeCss: false
+    includeJavascript: false

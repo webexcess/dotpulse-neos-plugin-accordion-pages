@@ -1,0 +1,5 @@
+# Frontend-Redirect to parent Neos.NodeTypes:Page
+root.accordionFrontendRedirect {
+	condition = ${q(node).filter('[instanceof Dotpulse.AccordionPages:Content]').is() && documentNode.context.live}
+	type = 'Dotpulse.AccordionPages:Redirect'
+}

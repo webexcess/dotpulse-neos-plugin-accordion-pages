@@ -1,0 +1,21 @@
+{
+  "name": "Dotpulse.AccordionPages",
+  "description": "Render Accordion from pages",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dotpulse/AccordionPages.git"
+  },
+  "devDependencies": {
+    "cssnano-cli": "latest",
+    "node-sass": "latest",
+    "uglifyify": "latest"
+  },
+  "scripts": {
+    "build:js": "uglifyjs Resources/Private/Javascripts/Accordion.js --mangle --compress > Resources/Public/Main.js",
+    "build:rawjs":  "cp Resources/Private/Javascripts/Accordion.js Resources/Public/Main.js",
+    "build:css": "node-sass Resources/Private/Scss/Accordion.scss Resources/Public/Main.css | cssnano Resources/Public/Main.css Resources/Public/Main.css  --autoprefixer.add true --autoprefixer.browsers: '> 1%' --no-zindex --discardComments.removeAll true",
+    "build": "npm run build:css && npm run build:js",
+    "start": "npm run build"
+  }
+}
